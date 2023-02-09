@@ -1,14 +1,20 @@
-
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NoteProvider from '@/contexts/NoteContext';
+import HomeScreen from '@/screens/HomeScreen';
+import { RootStackParamList } from '@/types';
 
-import HomeScreen from '../screens/HomeScreen';
-
-import { RootStackParamList } from '../types';
-
-export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
+}) {
   return (
     <NavigationContainer
       theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
@@ -21,8 +27,14 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Notes' }} />
-    </Stack.Navigator>
+    <NoteProvider>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="HomeScreen"
+          component={HomeScreen}
+          options={{ title: 'Notes' }}
+        />
+      </Stack.Navigator>
+    </NoteProvider>
   );
 }
