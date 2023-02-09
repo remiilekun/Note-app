@@ -10,7 +10,10 @@
     "test": "jest --watchAll"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ]
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
@@ -19,6 +22,7 @@
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
+    "dayjs": "^1.11.7",
     "expo": "~47.0.12",
     "expo-asset": "~8.7.0",
     "expo-constants": "~14.0.2",
@@ -40,6 +44,9 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@react-native-community/eslint-config": "^3.2.0",
+    "@testing-library/jest-native": "^5.4.1",
+    "@testing-library/react-native": "^11.5.2",
+    "@types/jest": "^29.4.0",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
