@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NoteProvider from '@/contexts/NoteContext';
 import HomeScreen from '@/screens/HomeScreen';
 import AddNoteScreen from '@/screens/AddNoteScreen';
+import EditNoteScreen from '@/screens/EditNoteScreen';
 import { RootScreens, RootStackParamList } from '@/types';
 
 export default function Navigation({
@@ -46,6 +47,13 @@ function RootNavigator() {
           component={AddNoteScreen}
           options={{
             title: 'Add Note',
+          }}
+        />
+        <Stack.Screen
+          name={RootScreens.EditNote}
+          component={EditNoteScreen}
+          options={{
+            title: 'Edit Note',
           }}
         />
       </Stack.Navigator>

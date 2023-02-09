@@ -8,9 +8,13 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<RootScreens.Home>) => {
     navigation.navigate(RootScreens.AddNote);
   };
 
+  const onNotePress = (id: string) => {
+    navigation.navigate(RootScreens.EditNote, { id });
+  };
+
   return (
     <View style={styles.container}>
-      <NoteList />
+      <NoteList onNotePress={onNotePress} />
       <FAB onPress={onFabPress} />
     </View>
   );

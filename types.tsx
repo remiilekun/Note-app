@@ -14,11 +14,13 @@ declare global {
 export enum RootScreens {
   Home = 'HomeScreen',
   AddNote = 'AddNote',
+  EditNote = 'EditNote',
 }
 
 export type RootStackParamList = {
   [RootScreens.Home]: undefined;
   [RootScreens.AddNote]: undefined;
+  [RootScreens.EditNote]: { id?: string };
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =

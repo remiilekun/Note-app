@@ -6,6 +6,7 @@ import {
   TouchableOpacityProps,
   View,
 } from 'react-native';
+import { formatNoteDate } from '@/utils/misc';
 import { Note } from '@/types';
 
 type NoteCardProps = {
@@ -21,7 +22,7 @@ export const NoteCard = ({ note, ...props }: NoteCardProps) => {
       {...props}>
       <View style={styles.noteHeader}>
         <Text style={styles.noteTitle}>{note.title}</Text>
-        <Text>{note.createdAt.toLocaleString()}</Text>
+        <Text>{formatNoteDate(note.updatedAt || note.createdAt)}</Text>
       </View>
 
       <Text numberOfLines={2} style={styles.noteContent}>
