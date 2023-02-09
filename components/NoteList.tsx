@@ -1,11 +1,11 @@
 import React from 'react';
 import { FlatList, FlatListProps, View, StyleSheet, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import useNotes from '@/hooks/useNotes';
 import { Note } from '@/types';
 import NoteCard from './NoteCard';
 
 type NoteListProps = {
-  notes?: Note[];
   onNotePress?: (id: string) => void;
 } & Omit<FlatListProps<any>, 'data' | 'renderItem'>;
 
@@ -23,11 +23,9 @@ const ListEmptyState = () => {
   );
 };
 
-export const NoteList = ({
-  notes = [],
-  onNotePress,
-  ...props
-}: NoteListProps) => {
+export const NoteList = ({ onNotePress, ...props }: NoteListProps) => {
+  const { notes } = useNotes();
+
   const renderItem = ({ item }: { item: Note }) => {
     return <NoteCard note={item} onPress={() => onNotePress?.(item.id)} />;
   };

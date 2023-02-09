@@ -1,12 +1,17 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { FAB, NoteList } from '@/components';
+import { RootScreens, RootStackScreenProps } from '@/types';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: RootStackScreenProps<RootScreens.Home>) => {
+  const onFabPress = () => {
+    navigation.navigate(RootScreens.AddNote);
+  };
+
   return (
     <View style={styles.container}>
       <NoteList />
-      <FAB />
+      <FAB onPress={onFabPress} />
     </View>
   );
 };

@@ -21,7 +21,7 @@ export const NoteCard = ({ note, ...props }: NoteCardProps) => {
       {...props}>
       <View style={styles.noteHeader}>
         <Text style={styles.noteTitle}>{note.title}</Text>
-        <Text>{note.createdAt.toString()}</Text>
+        <Text>{note.createdAt.toLocaleString()}</Text>
       </View>
 
       <Text numberOfLines={2} style={styles.noteContent}>

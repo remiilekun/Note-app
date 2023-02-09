@@ -8,7 +8,8 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NoteProvider from '@/contexts/NoteContext';
 import HomeScreen from '@/screens/HomeScreen';
-import { RootStackParamList } from '@/types';
+import AddNoteScreen from '@/screens/AddNoteScreen';
+import { RootScreens, RootStackParamList } from '@/types';
 
 export default function Navigation({
   colorScheme,
@@ -28,11 +29,24 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 function RootNavigator() {
   return (
     <NoteProvider>
-      <Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName={RootScreens.Home}
+        screenOptions={{
+          headerBackButtonMenuEnabled: true,
+          headerBackTitle: 'Go back',
+        }}>
         <Stack.Screen
-          name="HomeScreen"
+          name={RootScreens.Home}
           component={HomeScreen}
           options={{ title: 'Notes' }}
+        />
+
+        <Stack.Screen
+          name={RootScreens.AddNote}
+          component={AddNoteScreen}
+          options={{
+            title: 'Add Note',
+          }}
         />
       </Stack.Navigator>
     </NoteProvider>
